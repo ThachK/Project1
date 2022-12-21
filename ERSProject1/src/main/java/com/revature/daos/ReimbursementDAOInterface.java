@@ -10,7 +10,14 @@ public interface ReimbursementDAOInterface {
     //select all from reimbursements where user-id ...
     ArrayList<Reimbursement> getReimbursementsById(int user_id);
 
-    //create dao methods to get foreign keys
+    //method to change the reimbursement status
+    boolean updateReimbursementStatusById(int rId, int statusId);
+
+    //method to view only pending reimbursements
+    ArrayList<Reimbursement> getPendingReimbursements(int statusId);
+
+    //method to submit new reimbursements
+    Reimbursement insertReimbursement(Reimbursement reimbursement);
 
 
 
