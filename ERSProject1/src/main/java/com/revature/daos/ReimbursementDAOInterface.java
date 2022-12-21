@@ -8,7 +8,7 @@ public interface ReimbursementDAOInterface {
 
     //view previous ticket reimbursement submissions
     //select all from reimbursements where user-id ...
-    ArrayList<Reimbursement> getReimbursementsById(int user_id);
+    ArrayList<Reimbursement> getReimbursementsByUserId(int user_id);
 
     //method to change the reimbursement status
     boolean updateReimbursementStatusById(int rId, int statusId);
@@ -19,6 +19,8 @@ public interface ReimbursementDAOInterface {
     //method to submit new reimbursements
     Reimbursement insertReimbursement(Reimbursement reimbursement);
 
+    //get reimbursements by reimbursement id
+    Reimbursement getReimbursementsById(int rId);
 
 
 }

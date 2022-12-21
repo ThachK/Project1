@@ -64,6 +64,6 @@ public class Launcher {
         app.patch("/reimbursements/{reimbursementId}/{reimbursementStatusId}", rc.updateUserReimbursementByStatusHandler);
 
         app.post("/status-pending", rc.getUserReimbursementByStatusHandler);
-
+        app.get("/login/view-reimbursements", rc.getReimbursementsByIdHandler);
     }
 }

@@ -14,7 +14,7 @@ public class UserDAO implements UserDAOInterface{
     public User insertUser(User user) {
         try (Connection conn = ConnectionUtils.getConnection()) {
             String sql = "INSERT INTO users(first_name, last_name, username, user_password, user_role_id_fk) " +
-                    "VALUES (? , ?, ?, ?, ?); ";
+                    "VALUES (? , ?, ?, ?, 2); ";
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -22,7 +22,6 @@ public class UserDAO implements UserDAOInterface{
             ps.setString(2, user.getLast_name());
             ps.setString(3, user.getUsername());
             ps.setString(4, user.getUser_password());
-            ps.setInt(5, user.getUser_role_id_fk());
 
             ps.executeUpdate(); // execute query is only for selects
 
