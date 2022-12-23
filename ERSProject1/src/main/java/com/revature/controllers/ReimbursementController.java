@@ -31,6 +31,8 @@ public class ReimbursementController {
 
     };
 
+    // TODO: create getUserReimbursementByType()
+
     public Handler getUserReimbursementByStatusHandler = (ctx) -> {
         if (AuthController.ses != null) {
 
