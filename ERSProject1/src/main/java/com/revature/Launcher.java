@@ -63,7 +63,7 @@ public class Launcher {
         app.post("/reimbursements", rc.insertReimbursementHandler);
         app.patch("/reimbursements/{reimbursementId}/{reimbursementStatusId}", rc.updateUserReimbursementByStatusHandler);
 
-        app.post("/status-pending", rc.getUserReimbursementByStatusHandler);
+        app.get("/status-pending", rc.getUserReimbursementByStatusHandler);
         app.get("/login/view-reimbursements", rc.getReimbursementsByIdHandler);
     }
 }

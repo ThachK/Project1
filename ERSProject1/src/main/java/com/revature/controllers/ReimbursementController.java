@@ -84,26 +84,31 @@ public class ReimbursementController {
                     ctx.status(401); //unauth
                 }
             }
-        }else { //if the user is NOT logged in:
+        } else { //if the user is NOT logged in:
             ctx.result("YOU MUST LOG IN TO DO THIS");
             ctx.status(401); //401 "unauthorized"
         }
     };
 
     public Handler insertReimbursementHandler = (ctx) -> {
-        String body = ctx.body();
-        Gson gson = new Gson();
+        if (AuthController.ses != null) {
+            String body = ctx.body();
+            Gson gson = new Gson();
 
-        Reimbursement reimbursement = gson.fromJson(body, Reimbursement.class);
-        System.out.println(reimbursement.toString());
+            Reimbursement reimbursement = gson.fromJson(body, Reimbursement.class);
+            System.out.println(reimbursement.toString());
 
-        if (reimbursementDAO.insertReimbursement(reimbursement) != null) {
-            ctx.status(202);
-            ctx.result(body);
-        } else {
-            ctx.status(401); //unauthorized
-            ctx.result("Insert reimbursement failed. Reimbursement Amounts and " +
-                    "Descriptions are required, please try again.");
+            if (reimbursementDAO.insertReimbursement(reimbursement) != null) {
+                ctx.status(202);
+                ctx.result(body);
+            } else {
+                ctx.status(401); //unauthorized
+                ctx.result("Insert reimbursement failed. Reimbursement Amounts and " +
+                        "Descriptions are required, please try again.");
+            }
+        }else { //if the user is NOT logged in:
+            ctx.result("YOU MUST LOG IN TO DO THIS");
+            ctx.status(401); //401 "unauthorized"
         }
     };
 }
